@@ -10,6 +10,8 @@ public class movement : MonoBehaviour {
 	public float speed;
 	public TextMeshProUGUI countText;
 	public GameObject winTextObject;
+	public GameObject countTextObject;
+	public GameObject pickUpParentObject;
 
         private float movementX;
         private float movementY;
@@ -30,6 +32,7 @@ public class movement : MonoBehaviour {
 
                 // Set the text property of the Win Text UI to an empty string, making the 'You Win' (game over message) blank
                 winTextObject.SetActive(false);
+				countTextObject.SetActive(true);
 	}
 
 	void FixedUpdate ()
@@ -65,12 +68,13 @@ public class movement : MonoBehaviour {
 
         void SetCountText()
 	{
-		countText.text = "Count: " + count.ToString();
+		countText.text = pickUpParentObject.transform.childCount + " / " + count.ToString();
 
 		if (count >= 12) 
 		{
                     // Set the text value of your 'winText'
                     winTextObject.SetActive(true);
+					countTextObject.SetActive(false);
 		}
 	}
 }
