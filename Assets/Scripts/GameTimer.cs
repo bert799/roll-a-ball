@@ -8,10 +8,15 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private float totalTimeSec;
     [SerializeField] private bool timerIsRunning = false;
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private GameObject countTextObject;
+	[SerializeField] private GameObject TimerTextObject;
+    [SerializeField] private GameObject gameOverScreen;
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         timerIsRunning = true;
+        gameOverScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,6 +34,10 @@ public class GameTimer : MonoBehaviour
                 Debug.Log("Time has run out!");
                 totalTimeSec = 0;
                 timerIsRunning = false;
+                gameOverScreen.SetActive(true);
+                TimerTextObject.SetActive(false);
+                countTextObject.SetActive(false);
+                Time.timeScale = 0;
             }
         }  
     }

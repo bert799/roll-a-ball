@@ -9,8 +9,9 @@ public class movement : MonoBehaviour {
 	// Create public variables for player speed, and for the Text UI game objects
 	public float speed;
 	public TextMeshProUGUI countText;
-	public GameObject winTextObject;
+	public GameObject winPanelObject;
 	public GameObject countTextObject;
+	public GameObject TimerTextObject;
 	public GameObject pickUpParentObject;
 
         private float movementX;
@@ -31,8 +32,9 @@ public class movement : MonoBehaviour {
 		SetCountText ();
 
                 // Set the text property of the Win Text UI to an empty string, making the 'You Win' (game over message) blank
-                winTextObject.SetActive(false);
+                winPanelObject.SetActive(false);
 				countTextObject.SetActive(true);
+				TimerTextObject.SetActive(true);
 	}
 
 	void FixedUpdate ()
@@ -73,8 +75,11 @@ public class movement : MonoBehaviour {
 		if (count >= 12) 
 		{
                     // Set the text value of your 'winText'
-                    winTextObject.SetActive(true);
+                    winPanelObject.SetActive(true);
 					countTextObject.SetActive(false);
+					TimerTextObject.SetActive(false);
+					TimerTextObject.GetComponent<GameTimer>().enabled = false;
+					Time.timeScale = 0;
 		}
 	}
 }
