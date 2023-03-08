@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// adaptado do seguinte site: https://gamedevbeginner.com/how-to-make-countdown-timer-in-unity-minutes-seconds/
+
 public class GameTimer : MonoBehaviour
 {
     [SerializeField] private float totalTimeSec;

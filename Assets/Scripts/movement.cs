@@ -13,6 +13,7 @@ public class movement : MonoBehaviour {
 	public GameObject countTextObject;
 	public GameObject TimerTextObject;
 	public GameObject pickUpParentObject;
+	[SerializeField] private GameObject gameOverScreen;
 
         private float movementX;
         private float movementY;
@@ -57,6 +58,14 @@ public class movement : MonoBehaviour {
 
 			// Run the 'SetCountText()' function (see below)
 			SetCountText ();
+		}
+
+		if (other.gameObject.CompareTag ("DeathObject"))
+		{
+			Time.timeScale = 0;
+			gameOverScreen.SetActive(true);
+			TimerTextObject.SetActive(false);
+			countTextObject.SetActive(false);
 		}
 	}
 
